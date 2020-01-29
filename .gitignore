@@ -1,0 +1,18 @@
+UserPrefs.xml
+AssemblyInfo.cs
+
+# File extensions
+*.sln
+*.json
+*.lock
+*.ide
+*.ide-shm
+*.ide-wal
+*.exe
+*.cache
+*.pdb
+*.csproj
+*.user
+
+# Folders
+data-structures/hash-tables/HashTable/obj/Debug/
