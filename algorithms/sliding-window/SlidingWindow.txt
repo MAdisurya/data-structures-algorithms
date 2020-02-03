@@ -1,0 +1,123 @@
+﻿----------------------------
+Sliding Window Algorithrm
+----------------------------
+
+Time Complexity: O(n)
+
+Space Complexity: O(n)
+
+----------------------------
+Explanation
+----------------------------
+
+Given a sequential data structure such as an Array, Linked List, String, etc.
+
+The sliding window algorithm is an algorithm that can be used to improve the optimization of
+many subarray problems e.g. Finding the minimum value, finding maximum value, finding longest value,
+finding shortest value, k-sized value, etc.
+
+Example of what a Sliding Window looks like:
+
+Given an array of Integers: [1, 2, 3, 4, 5, 6]
+
+A Sliding Window of 3 would look like:
+
+[1, 2, 3]
+   [2, 3, 4]
+      [3, 4, 5]
+         [4, 5, 6]
+
+Reference: https://stackoverflow.com/questions/8269916/what-is-sliding-window-algorithm-examples
+
+----------------------------
+Example
+----------------------------
+
+Let's say we're given a problem where we are given a String,
+and we have to find the Longest Substring without repeating Characters.
+
+The brute-force approach to this problem would be to:
+- Iterate through each Character in the String
+- For each Character, iterate through the next Characters until we find a duplicate
+- If we find a duplicate, then we exit that loop and return the length of the Substring (-1 to exclude the duplicate Character)
+
+Using the brute-force approach, we can conclude that the operation may take up to somewhere in O(k*n) time.
+Where k = the number of Characters in the Substring we have to check, n = The length of the String.
+Since we have to not only check every Character within the String, but also to check the next Characters
+for each Character within the String.
+
+A more optimized approach is to use the Sliding Window Algorithm.
+
+Sliding technique we will use:
+- Create two pointers, left and right so we can contract and expand the Window
+- The idea is that we contract the left side and expand the right side to simulate sliding.
+- E.g Given an array: [1, 2, 3, 4], we start with left at index = 0, and right at index = 1
+- So, [1, 2]
+- We expand the right side, and contract the left side:
+- Expand the right side: [1, 2, 3]
+- Contract the left side: [2, 3]
+- Here we can see that we slid the window from [1, 2] to [2, 3]
+
+The basic approach to solve the problem:
+- For this problem, we'll need to store the duplicate Characters in another DS. A Hash Map would be good here.
+- We start by expanding the right side of the window.
+- If there are no duplicates, continue to expand the right side.
+- If the current Substring's length > Longest length, then update the new Longest Substring value.
+- If we find a duplicate Character, we contract the left side of the window to find the next Longest Substring
+- We continue to do this operation until we've checked entire String.
+
+Notice, with this approach, we only check each Character once (Linear time).
+Therefore, the time complexity is: O(n).
+
+So let's apply this approach to a String: "pwwkew" => ["p", "w", "w", "k", "e", "w"]
+
+First we'll initialize the left and right side of the window to index = 0:
+
+"(p)wwkew"
+Longest = 1
+
+Since we have no duplicates, and they're both at 0, we start expanding/incrementing the right side:
+
+"(pw)wkew"
+Longest = 2
+
+No duplicates, and we have a new Longest Substring - so we store the new length, and continue to increment the right side:
+
+"(pww)kew"
+Longest = 2
+
+Here we find our first duplicate, so contract/increment the left side to slide the window forward:
+Notice that we don't
+
+"p(ww)kew"
+Longest = 2
+
+We still have a duplicate here, so keep contracting/incrementing the left side:
+
+"pw(w)kew"
+Longest = 2
+
+No more duplicates, so we expand/increment the right side of the window:
+
+"pw(wk)ew"
+Longest = 2
+
+We keep going since there are no duplicates:
+
+"pw(wke)w"
+Longest = 3
+
+No duplicates, but we've found a new Longest Substring, so we update/store the new length.
+
+"pw(wkew)"
+Longest = 3
+
+We find a duplicate, so we contract/increment the left side.
+
+"pww(kew)"
+Longest = 3
+
+No duplicates, so we expand/increment the right side of the window.
+But since the right side will be greater than the length of the String, we exit the loop.
+
+
