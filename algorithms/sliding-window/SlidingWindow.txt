@@ -120,4 +120,6 @@ Longest = 3
 No duplicates, so we expand/increment the right side of the window.
 But since the right side will be greater than the length of the String, we exit the loop.
 
+Reference: https://levelup.gitconnected.com/an-introduction-to-sliding-window-algorithms-5533c4fe1cc7
+
 
