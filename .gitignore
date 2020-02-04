@@ -13,6 +13,4 @@ AssemblyInfo.cs
 *.pdb
 *.csproj
 *.user
-
-# Folders
-data-structures/hash-tables/HashTable/obj/Debug/
+*.FileListAbsolute.txt
