@@ -1,0 +1,64 @@
+﻿----------------------------
+Binary Search Algorithm
+----------------------------
+
+Time Complexity: O(log(n))
+
+Space Complexity: O(1)
+
+----------------------------
+Explanation
+----------------------------
+
+Given a sorted array of comparable data types e.g. integers, floats and x = value to search,
+the Binary Search algorithm searches for x in the array using a divide and conquer method.
+
+How Binary Search works is that it finds the value of the middle index (m) of the given array,
+and compares it with the given value (x). Effectively, this splits the array in two.
+If x is higher than m, then we know that x is going to be on the right side of m.
+If x is lower than m, then we know that x is going to be on the left side of m.
+This operation occurs recursively until we've checked the entire array,
+and x is found/not found in the array.
+
+E.g. The brute force approach for searching a number in an array is to perform a linear search.
+Meaning we iterate over all the items inside the array until we find/don't find the number.
+Because it's a linear search, it will take up to O(n) time.
+
+What makes the Binary Search better is that it exponentially reduces the amount of
+items we search through the array after every iteration.
+What this means is that everytime we go through an iteration, we find the middle index,
+and based on that middle index, we take the right side or the left side of the array.
+This effectively cuts the number of items we look for in the array in half every single iteration.
+Therefore, Binary Search takes up to O(log(n)) time.
+
+----------------------------
+Example
+----------------------------
+
+Let's say we're given a sorted array:
+
+[2, 5, 8, 12, 16, 23, 38]
+
+Here, we want to find the number m = 16.
+
+So first, we find the number from the middle index:
+
+[2, 5, 8, (12), 16, 23, 38]
+
+Next, we compare 12 with m.
+If m > 12, then we search on the right side of 12,
+If m < 12, then we search on the left side of 12.
+
+Because m > 12, then we search the right side.
+
+So now we're looking at right side of the array:
+
+[2, 5, 8, 12, ((16, 23, 38))]
+
+Now we just repeat the process, find the middle number,
+then split the array accordingly:
+
+[16, (23), 38]
+
+Here, m < 23, so we search the left side.
+Since it's 16, we found our number, and exit the loop.
