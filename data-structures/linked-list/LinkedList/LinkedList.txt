@@ -1,0 +1,49 @@
+﻿----------------------------
+Explanation
+----------------------------
+
+A Linked List is a sequential linear data structure that consists of nodes.
+These nodes contain a data field, and has a reference/pointer to its next node - which creates some form of chain.
+
+Note that unlike arrays, the elements in a Linked List are not stored in contigous memory.
+E.g.
+- For Arrays, usually to retrieve the entire array inside memory, a program would find a reference to the head
+  of the array and from there be able to get the rest of the elements as they are stored right next to where
+  the head of the array is.
+- For Linked Lists, however, each node/element may not be stored right next to each other (contigously).
+
+Below is a visual representation of a Linked List:
+
+Head:[ A ] -> [ B ] -> [ C ] -> [ D ]:Tail -> [ Null ]
+
+Note that in Linked List implementations, there is also a reference to the
+Head of the Linked List so that we have an entry point for traversing the Linked List.
+
+Also note that our last element points to Null. The reason is because each node has a reference
+that needs points to a memory address. Especially in languages such as C++, we want to do this
+to avoid wild pointers.
+
+----------------------------
+Key Definitions
+----------------------------
+
+Singly Linked List
+---------------------
+A Singly Linked List is Linked List where each node has a pointer to the next node, but not its previous node.
+
+Pros:
+- Uses less memory than a doubly linked list - as we only need one reference instead of two.
+- Easier to implement
+
+Cons:
+- It's harder to access previous elements/nodes. You'd have to traverse the Linked List from the Head.
+
+Doubly Linked List
+---------------------
+A Doubly Linked List is a Linked List where each node has a pointer to both the next node and its previous node.
+
+Pros:
+- Easy access to previous nodes, so can be traversed backwards.
+
+Cons:
+- Takes up double the amount of memory compared to a Singly Linked List - as we need two references instead of one.
