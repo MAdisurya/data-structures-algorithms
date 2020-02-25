@@ -10,6 +10,7 @@ But feel free to look at the source code, fork it, etc.
 
 ### Data Structures
 - [Hash Table/Map](https://github.com/MAdisurya/data-structures-algorithms/tree/master/data-structures/hash-tables/HashTable)
+- [Linked List](https://github.com/MAdisurya/data-structures-algorithms/tree/master/data-structures/linked-list/LinkedList)
 
 ### Algorithms
 - [Sliding Window](https://github.com/MAdisurya/data-structures-algorithms/tree/master/algorithms/sliding-window)
