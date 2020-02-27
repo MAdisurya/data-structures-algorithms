@@ -1,0 +1,94 @@
+﻿----------------------------
+Merge Sort Algorithm
+----------------------------
+
+Time Complexity:
+- Worst Case: O(nlog(n))
+- Average Case: O(nlog(n))
+- Best Case: O(nlog(n))
+
+Space Complexity: O(n)
+
+----------------------------
+Explanation
+----------------------------
+
+Merge sort is a divide and conquer algorithm usually performed recursively.
+How it works is it takes an unsorted array of a comparable type (e.g. int), and divides the array
+until we have multiple arrays consisting of only 0-1 elements.
+It then merges the arrays back together by comparing the elements between
+one array and another array, and then placing the elements in order into a new array.
+This process continues recursively until we rebuild the original array but with sorted
+elements instead.
+
+----------------------------
+Example
+----------------------------
+
+Unsorted Array: [2, 8, 5, 3, 9, 4, 1, 7]
+
+The merge sort starts by recursively dividing the array into multiple arrays.
+This keeps going until each array only consists of 0-1 elements.
+
+[2, 8, 5, 3, 9, 4, 1, 7]
+           |
+           V
+[2, 8, 5, 3][9, 4, 1, 7]
+           |
+           V
+[2, 8][5, 3][9, 4][1, 7]
+           |
+           V
+[2][8][5][3][9][4][1][7]
+
+The recursion tree will look something like this:
+
+[2, 8, 5, 3, 9, 4, 1, 7]
+           |
+      _____|______
+     |            |
+([2, 8, 5, 3][9, 4, 1, 7])
+             |
+    _________|_________
+   |      |      |     |
+([2, 8][5, 3])([9, 4][1, 7])
+              |
+  ____________|______________
+ |   |    |  |    |  |    |  |
+([2][8])([5][3])([9][4])([1][7])
+
+
+Once the array has been divided into multiple arrays consisting of 0-1 elements,
+It starts combining the arrays together by comparing the elements of the left subarray
+and the right subarray, then storing the sorted result in a new array.
+
+Note: We want to sort the array in ascending order.
+
+Step 1: Notice how the arrays are sorted in its own bracket.
+The brackets represent the scope of the merge method, where we
+recursively pass in left and right subarrays into the method.
+E.g. Merge(Mergesort(left), Mergesort(right))
+
+([2][8])([5][3])([9][4])([1][7])
+              |
+              V
+([2, 8])([3, 5])([4, 9])([1, 7])
+
+Step 2: We move up the recursion tree with the new set of arrays
+The comparison order is it will check from the left subarray first, then the right subarray.
+In this case, the order is:
+Left subarray: 2 & 3, 8 & 3, 8 & 5, 8
+Right subarray: 4 & 1, 4 & 7, 9 & 7, 9
+
+([2, 8][3, 5])([4, 9][1, 7])
+             |
+             V
+ ([2, 3, 5, 8][1, 4, 7, 9])
+
+Step 3: We move up the recursion tree again with the new set of arrays
+Order of comparison: 2 & 1, 2 & 4, 3 & 4, 5 & 4, 5 & 7, 8 & 7, 8 & 9, 9
+
+([2, 3, 5, 8][1, 4, 7, 9])
+            |
+            V
+([1, 2, 3, 4, 5, 6, 7, 8, 9])
