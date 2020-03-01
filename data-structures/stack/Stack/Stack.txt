@@ -1,0 +1,48 @@
+﻿----------------------------
+Explanation
+----------------------------
+
+"A stack is a one-ended linear data structure which models a real world stack
+by having two primary operations - push and pop." - William Fiset
+
+The stack follows a basic order: LIFO (Last In, First Out) or FILO (First In, Last Out).
+
+A stack is also an abstract data structure, meaning that it can be implemented using either
+a Linked List or an Array.
+
+The best way I find in visualizing what a stack is, is to visualize stacking plates.
+When stacking plates, we always stack the next plate on the top of the stack -
+but when we want to remove a plate, we have to take it from the top of the stack.
+This means that the bottom most plate will always be the last to be removed from the stack.
+We can see that this follows the LIFO order (Last In, First Out).
+
+Images:
+
+https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Lifo_stack.png/350px-Lifo_stack.png
+
+https://www.cs.colostate.edu/~cs165/.Fall19/assignments/P5/doc/images/StackImage.jpg
+
+----------------------------
+Key Definitions
+----------------------------
+
+Difference between LIFO and FILO
+---------------------------------
+
+The main difference between the LIFO order and FILO order is where we push and pop objects
+from the stack.
+
+LIFO (Last In, First Out) order is when we push objects to the TOP of the stack, and pop
+objects from the TOP of the stack.
+
+FILO (First In, Last Out) order is when we push objects to the BOTTOM of the stack, and pop
+objects from the BOTTOM of the stack.
+
+However, both LIFO and FILO satisfy the stack variant.
+
+Choosing which ordering to use entirely depends on how we want to implement the stack.
+
+For example, we would use the FILO ordering over the LIFO ordering when implementing the stack
+using a singly linked list. The reason is because if we do the push and pop operations at the end/tail (top)
+of the singly linked list, it would take up to O(n) time. But if we do the push and pop operations at
+start/head (bottom) of the singly linked list, we can push and pop in constant O(1) time.
