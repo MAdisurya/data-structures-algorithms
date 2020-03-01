@@ -136,5 +136,24 @@ class MainClass
         Console.WriteLine();
 
         Console.WriteLine($"Size: {stackLinkedList.Size()}");
+
+        // Expected Output
+        // ------------------
+        // Size: 0
+        // IsEmpty: True
+        //
+        // Push: John
+        // Push: Sarah
+        // Push: Mario
+        //
+        // Size: 3
+        // IsEmpty: False
+        //
+        // Pop: Mario
+        // Peek: Sarah
+        // Pop: Sarah
+        // Peek: John
+        //
+        // Size: 1
     }
 }
