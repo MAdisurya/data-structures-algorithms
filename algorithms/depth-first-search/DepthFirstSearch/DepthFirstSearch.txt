@@ -1,0 +1,168 @@
+﻿----------------------------
+Explanation
+----------------------------
+
+Time Complexity: O(V+E)
+
+"The Depth First Search (DFS) is the most fundamental search algorithm
+used to explore nodes and edges of a graph." - William Fiset
+
+"DFS plunges depth first into a graph without regard for which edge it
+takes next until it cannot go any further at which point it backtracks
+and continues." - William Fiset
+
+"By itself the DFS isn't all that useful, but when augmented to perform
+other tasks such as count connected components, determine connectivity,
+or find bridges/articulation points then DFS really shines." - William Fiset
+
+Given a tree data structure e.g. Binary Tree, Graphs, etc.
+The DFS algorithrm begins at the root node of the tree, and traverses
+down its child nodes until its reached the bottom (the last child node).
+After all the child nodes have been visited, the DFS will backtrack back
+up the tree until it finds a node where its child nodes have not been
+visited yet - in which it will continue to go down and visit that nodes child nodes.
+
+----------------------------
+Examples
+----------------------------
+
+Binary Tree - DFS Example:
+
+            [0]
+         ____|____
+        |         |
+       [2]       [8]
+      __|__     __|__
+     |     |   |     |
+    [3]   [6] [9]   [12]
+
+1. The DFS algorithm starts at the root node - in this case, the root node is 0.
+             
+           *[0]
+         ____|____
+        |         |
+       [2]       [8]
+      __|__     __|__
+     |     |   |     |
+    [3]   [6] [9]   [12]
+
+2. Then, traverse either the left branch or the right branch (we will
+   pick the left branch here). In this case, visit the left child node
+   which is 2.
+
+            [0]
+         ____|____
+        |         |
+      *[2]       [8]
+      __|__     __|__
+     |     |   |     |
+    [3]   [6] [9]   [12]
+
+3. Since 2 still has child nodes, we continue traversing down the tree. Since we
+   decided to go down the left branch first, visit 3.
+
+            [0]
+         ____|____
+        |         |
+       [2]       [8]
+      __|__     __|__
+     |     |   |     |
+   *[3]   [6] [9]   [12]
+
+3. Since 3 doesn't have any child nodes, it means we've reached a leaf node/the bottom
+   of the branch. So backtrack and revisit 3's parent node - which is 2.
+
+            [0]
+         ____|____
+        |         |
+      *[2]       [8]
+      __|__     __|__
+     |     |   |     |
+    [3]   [6] [9]   [12]
+
+4. Then we traverse 2's right branch. In this case, visit the right child node - 6.
+
+            [0]
+         ____|____
+        |         |
+       [2]       [8]
+      __|__     __|__
+     |     |   |     |
+    [3]  *[6] [9]   [12]
+
+5. 6 doesn't have any child nodes, so we've reached a leaf node/the bottom of the branch.
+   So backtrack and revisit 6's parent node - which is 2.
+
+            [0]
+         ____|____
+        |         |
+      *[2]       [8]
+      __|__     __|__
+     |     |   |     |
+    [3]   [6] [9]   [12]
+
+6. Since we've visited all of 2's branches/child nodes, continue backtracking and revisit
+   2's parent node - in this case, 0.
+
+           *[0]
+         ____|____
+        |         |
+       [2]       [8]
+      __|__     __|__
+     |     |   |     |
+    [3]   [6] [9]   [12]
+
+7. Now we traverse 0's right branch, and the process continues in the same way
+   until we've visited all the nodes in the tree.
+
+            [0]
+         ____|____
+        |         |
+       [2]      *[8]
+      __|__     __|__
+     |     |   |     |
+    [3]   [6] [9]   [12]
+
+            [0]
+         ____|____
+        |         |
+       [2]       [8]
+      __|__     __|__
+     |     |   |     |
+    [3]   [6]*[9]   [12]
+
+            [0]
+         ____|____
+        |         |
+       [2]      *[8]
+      __|__     __|__
+     |     |   |     |
+    [3]   [6] [9]   [12]
+
+            [0]
+         ____|____
+        |         |
+       [2]       [8]
+      __|__     __|__
+     |     |   |     |
+    [3]   [6] [9]  *[12]
+
+            [0]
+         ____|____
+        |         |
+       [2]      *[8]
+      __|__     __|__
+     |     |   |     |
+    [3]   [6] [9]   [12]
+
+           *[0]
+         ____|____
+        |         |
+       [2]       [8]
+      __|__     __|__
+     |     |   |     |
+    [3]   [6] [9]   [12]
+
+In an array form, DFS would look like this:
+
+[0, 2, 3, 2, 6, 2, 0, 8, 9, 8, 12, 8, 0]
