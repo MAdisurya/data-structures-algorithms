@@ -27,6 +27,7 @@ Examples
 ----------------------------
 
 Binary Tree - DFS Example:
+__________________________
 
             [0]
          ____|____
@@ -166,3 +167,13 @@ Binary Tree - DFS Example:
 In an array form, DFS would look like this:
 
 [0, 2, 3, 2, 6, 2, 0, 8, 9, 8, 12, 8, 0]
+
+
+Graph - DFS Example:
+____________________
+
+The DFS for a Graph data structure is essentially the same as the one for the Binary Tree.
+
+Here are some videos and images to demonstrate how the DFS works in a Graph:
+
+https://youtu.be/7fujbpJ0LB4?t=79
