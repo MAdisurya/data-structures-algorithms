@@ -1,0 +1,59 @@
+﻿----------------------------
+Explanation
+----------------------------
+
+"A Queue is a linear data structure which models real world queues
+by having two primary operations, namely enqueue and dequeue." - William Fiset
+
+A queue is a linear data structure that follows the First In, First Out (FIFO) ordering.
+Unlike a stack, which uses LIFO (Last In, First Out) or FILO (First In, Last Out)
+ordering, where we insert and remove items from the same place - A queue inserts
+and removes items from opposite ends. E.g. insert at the bottom and remove from the top.
+
+"In a stack we remove the item the most recently added; in a queue, we remove
+the item the least recently added." - GeeksforGeeks
+
+A good example of a queue is basically any real world queue e.g. waiting in line
+in McDonalds - where it's first in, first served. Customers who are last to enter
+the queue have to wait for the other customers who were already in the queue.
+
+Note that a queue is an abstract data structure - meaning that it can be implemented
+with either an array or linked list.
+
+----------------------------
+Example
+----------------------------
+
+Let's say we have this Queue representation:
+
+[0] <= [1] <= [2] <= [3]
+
+We want to enqueue/insert: [4]
+So we insert [4] in the back of the queue
+
+[0] <= [1] <= [2] <= [3] <= [4]
+
+Now we want to dequeue/remove from the queue
+So we remove the first item: [0]
+
+[1] <= [2] <= [3] <= [4]
+
+Notice that if we want to get rid of
+one of the middle numbers - let's say [3]
+We first have to dequeue/remove the numbers
+that are in front of the queue
+
+1. [1] <= [2] <= [3] <= [4]
+
+2. [2] <= [3] <= [4]
+
+3. [3] <= [4]
+
+4. [4]
+
+If we want to enqueue the number [2] back,
+it goes in the back of the queue
+
+1. [4]
+
+2. [4] <= [2]
