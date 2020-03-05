@@ -1,0 +1,82 @@
+﻿----------------------------
+Explanation
+----------------------------
+
+"Dynamic programming amounts to breaking down an optimization problem into
+simpler sub-problems, and storing the solution to each sub-problem so that
+each sub-problem is only solved once." - FreeCodeCamp
+
+"Dynamic programming is about finding some work/problem that
+the naive (usually recursive) solution would repeat multiple times
+unnecessarily and instead optimizing it by saving the result of the
+sub-problems and reusing it multiple times to avoid extra computation" - Errichto
+
+The misconception that I had with Dynamic Programming is that I thought of it
+as any other algorithm where there's only one general way to implement it in code.
+However, Dynamic Programming is more of a framework or 'way of thinking' that
+we can apply to different problems, where in each problem - we may implement a
+completely different solution/algorithm to each problem, but the solution still follows
+the general guidelines and thinking of Dynamic Programming.
+
+In fact, you can think of dynamic programming as a type/category for
+some algorithms instead of it being an algorithm itself.
+
+Most of dynamic programming problems belong to one of three types of categories:
+
+1. Count something, often the number of ways
+
+2. Minimize or maximize certain values
+
+3. YES/NO questions
+
+For dynamic programming implementation, there's two different
+approaches we can take:
+
+Iterative vs Recursive
+
+----------------------------
+Key Definitions
+----------------------------
+
+Memoization
+______________
+
+Essentially, memoization is just like cacheing, where the goal is
+to "avoid doing the same work repeatedly to avoid spending unnecessary
+running time or resources." - Leo Wu
+
+Basically, it's "storing the results of expensive function calls and returning
+the cached results when the same inputs occur again."
+
+These "expensive function calls" refers to recursion - where somewhere in the
+recursion tree, multiple function calls are called with the same parameter.
+
+E.g. Fibonacci sequence using recursive solution.
+
+                    f(4)
+                _____|_____
+               |           |
+              f(3)        f(2)
+            ___|___     ___|___
+           |       |   |       |
+          f(2)   f(1) f(1)    f(0)
+         __|__   
+        |     |      
+       f(1) f(0)
+
+Looking at the fibonacci recursion tree above, we can see that f(2), f(1), and f(0)
+are repeated twice in the tree. We can use memoization to remove the repeated
+function calls by caching the results instead.
+
+----------------------------
+Examples
+----------------------------
+
+Fibonacci Sequence
+___________________
+
+Instead of using a recursive approach, use an iterative approach and store
+the results of each computation in an array.
+
+The idea is to predefine the first two values in the array to 0 and 1 respectively.
+Then for indexes 2 to n inclusive, we store the result of n-1 + n-2.
