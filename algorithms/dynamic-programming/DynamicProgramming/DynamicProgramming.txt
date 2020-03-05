@@ -34,6 +34,17 @@ approaches we can take:
 
 Iterative vs Recursive
 
+Check out some of these articles/videos:
+
+Dynamic Programming Lecture by Errichto
+https://www.youtube.com/watch?v=YBSt1jYwVfU
+
+Demystifying Dynamic Programming by FreeCodingCamp
+https://www.freecodecamp.org/news/demystifying-dynamic-programming-3efafb8d4296/
+
+WTF is Memoization by Leo Wu
+https://medium.com/@chialunwu/wtf-is-memoization-a2979594fb2a
+
 ----------------------------
 Key Definitions
 ----------------------------
