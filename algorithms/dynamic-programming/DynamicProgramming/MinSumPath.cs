@@ -1,0 +1,7 @@
+﻿namespace DynamicProgramming
+{
+    class MinSumPath
+    {
+
+    }
+}
