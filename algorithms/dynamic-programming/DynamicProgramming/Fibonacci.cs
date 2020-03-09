@@ -1,4 +1,6 @@
-﻿namespace DynamicProgramming
+﻿using System;
+
+namespace DynamicProgramming
 {
     class Fibonacci
     {
@@ -33,6 +35,27 @@
             }
 
             return array[n];
+        }
+
+        public void Run()
+        {
+            Console.WriteLine("Fibonacci Iterative: ");
+            Console.WriteLine("---------------------");
+            Console.WriteLine(FibIterative(0));
+            Console.WriteLine(FibIterative(1));
+            Console.WriteLine(FibIterative(4));
+            Console.WriteLine(FibIterative(10));
+            Console.WriteLine(FibIterative(12));
+            Console.WriteLine(FibIterative(7));
+
+            // Expected Output
+            // -----------------
+            // 0
+            // 1
+            // 3
+            // 55
+            // 144
+            // 13
         }
     }
 }
