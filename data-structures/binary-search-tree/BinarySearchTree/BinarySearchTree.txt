@@ -1,0 +1,81 @@
+﻿----------------------------
+Explanation
+----------------------------
+
+"A tree is an undirected graph which satisfies any of the following
+definitions:" - William Fiset
+
+- An acyclic connected graph (meaning that there are no cycles)
+
+- A connected graph with N nodes and N-1 edges
+(Every node has an edge connecting to its parent node, except for the root node)
+
+- A graph in which any two vertices are connected by exactly one path.
+(Vertices = nodes, meaning that each node only has one connection/path
+to another node. If there are multiple, then that would assume that there is a
+cycle - which breaks the first condition)
+
+So what is a Binary Search Tree?
+
+"A binary search tree is a binary tree that satisfies the BST invariant:
+the left subtree has smaller elements and the right subtree has
+larger elements." - William Fiset
+
+This is so that we can perform a more optimized search
+(similar approach to a Binary Search).
+
+The idea is that since we know that left is smaller, and
+right is larger - we can reduce the amount of nodes we look through
+every iteration exponentially (we cut in half every step).
+
+Another thing to note is that some BST implementations do allow duplicate
+elements, however, it's not very common since there's no benefit of
+including duplicate elements.
+
+----------------------------
+Example
+----------------------------
+
+Consider this tree structure:
+
+            5
+       _____|_____
+      |           |
+      4           7
+   ___|        ___|___
+  |           |       |
+  3           6       8
+
+- It satisfies the binary tree definition where there is only one path
+between each node, and that there are no cycles.
+
+- There are also N nodes (6), but only N-1 edges (5)
+
+- Also satisfies the BST invariant as we can see that the left subtree has
+smaller elements, and the right subtree has larger elements.
+
+- E.g. in the second row, we see that 4 belongs in the left subtree because
+4 < 5, and 7 belongs in the right subtree because 7 > 5.
+
+- In the third row, 3 < 4, so belongs in 4's left subtree. 6 < 7, so belongs
+in 7's left subtree. 8 > 7, so belongs in 7's right subtree.
+
+----------------------------
+Key Definitions
+----------------------------
+
+Child
+------
+"A child is a node extending from another node." - William Fiset
+
+Parent
+-------
+"A parent is the inverse of a child node" - William Fiset
+
+Essentially, the node that the child is connected/extending from
+is the parent node.
+
+Binary Search Tree Invariant
+-----------------------------
+"The left subtree has smaller elements and the right subtree has
+larger elements." - William Fiset
