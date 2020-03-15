@@ -20,4 +20,5 @@ But feel free to look at the source code, fork it, etc.
 - [Binary Search](https://github.com/MAdisurya/data-structures-algorithms/tree/master/algorithms/binary-search)
 - [Merge Sort](https://github.com/MAdisurya/data-structures-algorithms/tree/master/algorithms/merge-sort/MergeSort)
 - [Depth First Search (DFS)](https://github.com/MAdisurya/data-structures-algorithms/tree/master/algorithms/depth-first-search/DepthFirstSearch)
+- [Breadth First Search (BFS)](https://github.com/MAdisurya/data-structures-algorithms/tree/master/algorithms/breadth-first-search/BreadthFirstSearch)
 - [Dynamic Programming](https://github.com/MAdisurya/data-structures-algorithms/tree/master/algorithms/dynamic-programming/DynamicProgramming)
