@@ -1,0 +1,208 @@
+﻿----------------------------
+Explanation
+----------------------------
+
+"The Breadth First Search (BFS) is a search algorithm used to explore
+nodes and edges of a graph. It runs with a time complexity of O(V+E)
+and is often used as a building block in other algorithms." - William Fiset
+
+The Breadth First Search (BFS) is a search algorithm usually performed on some
+tree structure, where it visits the nodes in the tree layer by layer.
+Unlike the Depth First Search (DFS) that visits a nodes child, then the childs
+children in the next step - BFS visits each nodes children first, then visits
+the children of the child nodes.
+
+To do this, BFS uses a Queue data structure to track which node to visit next.
+
+"Upon reaching a new node the algorithm adds it to the queue to visit
+it later." - William Fiset
+
+"The BFS algorithm is particularly useful for one thing:
+finding the shortest path on unweighted graphs." - William Fiset
+
+----------------------------
+Example
+----------------------------
+
+Let's say we have this tree structure:
+
+                0
+           _____|_____
+          |           |
+          1           2
+        __|__       __|__
+       |     |     |     |
+       3     4     5     6
+      _|_   _|_ 
+     |   | |   | 
+     7   8 9   10
+
+Queue: []
+
+Using the BFS algorithm, start from the root node - 0.
+We also add this node to the Queue DS.
+
+               (0)
+           _____|_____
+          |           |
+          1           2
+        __|__       __|__
+       |     |     |     |
+       3     4     5     6
+      _|_   _|_ 
+     |   | |   | 
+     7   8 9   10
+
+Queue: [0]
+
+Then, visit each child node of the current node in the top
+of the Queue (in this case - 0), and add these child nodes
+to the Queue.
+
+                0
+           _____|_____
+          |           |
+         (1)          2
+        __|__       __|__
+       |     |     |     |
+       3     4     5     6
+      _|_   _|_ 
+     |   | |   | 
+     7   8 9   10
+
+Queue: [0, 1]
+
+                0
+           _____|_____
+          |           |
+          1          (2)
+        __|__       __|__
+       |     |     |     |
+       3     4     5     6
+      _|_   _|_ 
+     |   | |   | 
+     7   8 9   10
+
+Queue: [0, 1, 2]
+
+Since all child nodes of 0 has been visited, we remove 0 from
+the Queue (Dequeue).
+
+Queue: [1, 2] (Dequeue: 0)
+
+The process gets repeated: Take the node at the top of the Queue (1)
+and visit each of it's child nodes and add them to the Queue.
+Then after all child nodes have been visited, dequeue the parent node.
+
+                0
+           _____|_____
+          |           |
+          1           2
+        __|__       __|__
+       |     |     |     |
+      (3)    4     5     6
+      _|_   _|_ 
+     |   | |   | 
+     7   8 9   10
+
+Queue: [1, 2, 3]
+
+                0
+           _____|_____
+          |           |
+          1           2
+        __|__       __|__
+       |     |     |     |
+       3    (4)    5     6
+      _|_   _|_ 
+     |   | |   | 
+     7   8 9   10
+
+Queue: [1, 2, 3, 4]
+
+Queue: [2, 3, 4] (Dequeue: 1)
+
+                0
+           _____|_____
+          |           |
+          1           2
+        __|__       __|__
+       |     |     |     |
+       3     4    (5)    6
+      _|_   _|_ 
+     |   | |   | 
+     7   8 9   10
+
+Queue: [2, 3, 4, 5]
+
+                0
+           _____|_____
+          |           |
+          1           2
+        __|__       __|__
+       |     |     |     |
+       3     4     5    (6)
+      _|_   _|_ 
+     |   | |   | 
+     7   8 9   10
+
+Queue: [2, 3, 4, 5, 6]
+
+Queue: [3, 4, 5, 6] (Dequeue: 2)
+
+                0
+           _____|_____
+          |           |
+          1           2
+        __|__       __|__
+       |     |     |     |
+       3     4     5     6
+      _|_   _|_ 
+     |   | |   | 
+    (7)  8 9   10
+
+Queue: [3, 4, 5, 6, 7]
+
+                0
+           _____|_____
+          |           |
+          1           2
+        __|__       __|__
+       |     |     |     |
+       3     4     5    (6)
+      _|_   _|_ 
+     |   | |   | 
+     7  (8)9   10
+
+Queue: [3, 4, 5, 6, 7, 8]
+
+Queue: [4, 5, 6, 7, 8] (Dequeue: 3)
+
+                0
+           _____|_____
+          |           |
+          1           2
+        __|__       __|__
+       |     |     |     |
+       3     4     5     6
+      _|_   _|_ 
+     |   | |   | 
+     7   8(9)  10
+
+Queue: [4, 5, 6, 7, 8, 9]
+
+                0
+           _____|_____
+          |           |
+          1           2
+        __|__       __|__
+       |     |     |     |
+       3     4     5    (6)
+      _|_   _|_ 
+     |   | |   | 
+     7   8 9  (10)
+
+Queue: [4, 5, 6, 7, 8, 9, 10]
+
+
+
