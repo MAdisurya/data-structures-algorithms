@@ -62,7 +62,6 @@ class Graph
         }
 
         // Reverse the path so we have s > e, not e > s
-        //ReverseArray(ref path, size);
         path.Reverse();
 
         // Handle case where the iteration may not have reached the start vertex
