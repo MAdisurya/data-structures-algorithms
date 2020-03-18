@@ -1,0 +1,258 @@
+﻿----------------------------
+Explanation
+----------------------------
+
+"A trie, also called digital tree and sometimes radix tree or prefix tree
+(as they can be searched by prefixes), is a kind of search tree - an
+ordered tree data structure that is used to store a dynamic set or associative
+array where the keys are usually strings." - Wikipedia
+
+A trie, or prefix tree is a tree data structure which is useful for searching
+using a prefix.
+Think of how google works, and when you type something in the search bar, google
+will auto-suggest some search options based on the prefix that you entered.
+
+E.g.
+
+Prefix is "a word, letter, or number placed before another."
+
+Prefix for the word: Telephone
+
+"T", "Te", "Tele", "Teleph", "Telephon" etc.
+
+The Trie is similar to the binary tree, where there are no cycles, and there
+is a clear root node in the tree structure.
+
+Each node within a Trie usually contains a hash table/map to store nodes
+corresponding with the characters, and also a boolean to mark whether
+the node is the last letter in the word - essentially marking it as a word.
+(This is important since complete words can also be prefixes for other words
+e.g. The word "Car" can also be a prefix for the word "Cart")
+
+----------------------------
+Example
+----------------------------
+
+INSERTION:
+-----------
+
+Let's say we have these list of words that we want to insert
+["Car", "Card", "Cot", "Cots", "Trie", "Try"]
+
+Add: "Car"
+----------
+
+1. We check if the first letter already exists in our roots hash map.
+In this case we don't, so we create a new node for "C" and store it inside
+the roots hash map
+
+                        *
+                ________|________
+               |                 |
+              "C"
+
+2. Next letter is "A". Now we check if "C" has an "A" inside it's hash map.
+If not, we add create a new node for "A" and add it to "C"s hashmap.
+
+                        *
+                ________|________
+               |                 |
+              "C"
+           ____|____
+          |         |
+         "A"
+
+3. Same thing again with "R".
+
+                        *
+                ________|________
+               |                 |
+              "C"
+           ____|____
+          |         |
+         "A"
+       ___|
+      |
+     "R"
+
+4. Since "R" is the last letter of the word "Car", we mark the "R" node as
+a complete word. In this case, it will be repsented using a "*".
+
+                        *
+                ________|________
+               |                 |
+              "C"
+           ____|____
+          |         |
+         "A"
+       ___|
+      |
+     "R"
+   ___|
+  |
+  *
+
+Add: "Card"
+-----------
+
+1. We do the same thing as before and take the first letter "C". This time,
+however, "C" already exists inside of the roots hash map, so
+we don't add anything - we just traverse down to the "C" node.
+
+                        *
+                ________|________
+               |                 |
+             ("C")
+           ____|____
+          |         |
+         "A"
+       ___|
+      |
+     "R"
+   ___|
+  |
+  *
+
+2. We take the second letter "A", but it already exists so traverse down to
+the "A" node.
+
+                        *
+                ________|________
+               |                 |
+              "C"
+           ____|____
+          |         |
+        ("A")
+       ___|
+      |
+     "R"
+   ___|
+  |
+  *
+
+3. Same thing with "R".
+
+                        *
+                ________|________
+               |                 |
+              "C"
+           ____|____
+          |         |
+         "A"
+       ___|
+      |
+    ("R")
+   ___|
+  |
+  *
+
+4. Now "D" doesn't exist in "R"s hash map, so we create a new node for "D" and
+add it to "R"s hash map
+
+                        *
+                ________|________
+               |                 |
+              "C"
+           ____|____
+          |         |
+         "A"
+       ___|
+      |
+     "R"
+   ___|___
+  |       |
+  *      "D"
+         _|
+        |
+        * 
+
+Add: "Cot"
+----------
+
+We follow the same process as before, so the trie should look something like this:
+
+                        *
+                ________|________
+               |                 |
+              "C"
+           ____|____
+          |         |
+         "A"       "O"
+       ___|      ___|
+      |         |
+     "R"       "T"
+    __|__     __|
+   |     |   |
+   *    "D"  *
+        _|
+       |
+       *         
+
+Add: Cots
+---------
+
+We do the same thing here:
+
+                        *
+                ________|________
+               |                 |
+              "C"
+           ____|____
+          |         |
+         "A"       "O"
+       ___|      ___|
+      |         |       
+     "R"       "T"
+    __|__     __|__
+   |     |   |     |
+   *    "D"  *    "S"
+        _|        _|
+       |         |
+       *         *
+
+Add: Trie
+---------
+
+We do the same thing here:
+
+                        *
+                ________|________
+               |                 |
+              "C"               "T"
+           ____|____         ____|____
+          |         |       |         |
+         "A"       "O"     "R"
+       ___|      ___|    ___|  
+      |         |       |
+     "R"       "T"     "I"
+    __|__     __|__   __|
+   |     |   |     | |
+   *    "D"  *    "S"E"
+        _|        _|_|
+       |         | |
+       *         * *
+
+Add: Try
+---------
+
+We do the same thing here:
+
+                        *
+                ________|________
+               |                 |
+              "C"               "T"
+           ____|____         ____|____
+          |         |       |         |
+         "A"       "O"     "R"
+       ___|      ___|    ___|___  
+      |         |       |       |
+     "R"       "T"     "I"     "Y"
+    __|__     __|__   __|     __|  
+   |     |   |     | |       |
+   *    "D"  *    "S"E"      *
+        _|        _|_|
+       |         | |
+       *         * *
+
+SEARCHING:
+----------- 
