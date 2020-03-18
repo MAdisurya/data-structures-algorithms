@@ -14,6 +14,7 @@ But feel free to look at the source code, fork it, etc.
 - [Stack](https://github.com/MAdisurya/data-structures-algorithms/tree/master/data-structures/stack/Stack)
 - [Queue](https://github.com/MAdisurya/data-structures-algorithms/tree/master/data-structures/queue/Queue)
 - [Binary Search Tree](https://github.com/MAdisurya/data-structures-algorithms/tree/master/data-structures/binary-search-tree/BinarySearchTree)
+- [Trie/Prefix Tree](https://github.com/MAdisurya/data-structures-algorithms/tree/master/data-structures/trie/Trie)
 
 ### Algorithms
 - [Sliding Window](https://github.com/MAdisurya/data-structures-algorithms/tree/master/algorithms/sliding-window)
