@@ -255,4 +255,198 @@ We do the same thing here:
        *         * *
 
 SEARCHING:
------------ 
+-----------
+
+With searching, we simply perform a depth first search traversal down the tree.
+
+Currently, our trie looks like this:
+
+                        *
+                ________|________
+               |                 |
+              "C"               "T"
+           ____|____         ____|____
+          |         |       |         |
+         "A"       "O"     "R"
+       ___|      ___|    ___|___  
+      |         |       |       |
+     "R"       "T"     "I"     "Y"
+    __|__     __|__   __|     __|  
+   |     |   |     | |       |
+   *    "D"  *    "S"E"      *
+        _|        _|_|
+       |         | |
+       *         * *
+
+We'll use these words for searching:
+["Card", "Ca", "Cap"]
+
+Search: "Card"
+--------------
+
+1. We start from the root node, and perform a look-up on it's hash map for the
+character "C" - which exists, so we'll move our pointer to that node.
+
+                        *
+                ________|________
+               |                 |
+             ("C")              "T"
+           ____|____         ____|____
+          |         |       |         |
+         "A"       "O"     "R"
+       ___|      ___|    ___|___  
+      |         |       |       |
+     "R"       "T"     "I"     "Y"
+    __|__     __|__   __|     __|  
+   |     |   |     | |       |
+   *    "D"  *    "S"E"      *
+        _|        _|_|
+       |         | |
+       *         * *
+
+2. Next we look-up the character "A" in "C"s hash map.
+
+                        *
+                ________|________
+               |                 |
+              "C"               "T"
+           ____|____         ____|____
+          |         |       |         |
+        ("A")      "O"     "R"
+       ___|      ___|    ___|___  
+      |         |       |       |
+     "R"       "T"     "I"     "Y"
+    __|__     __|__   __|     __|  
+   |     |   |     | |       |
+   *    "D"  *    "S"E"      *
+        _|        _|_|
+       |         | |
+       *         * *
+
+3. We continue the process for "R" and "D".
+
+                        *
+                ________|________
+               |                 |
+              "C"               "T"
+           ____|____         ____|____
+          |         |       |         |
+         "A"       "O"     "R"
+       ___|      ___|    ___|___  
+      |         |       |       |
+    ("R")      "T"     "I"     "Y"
+    __|__     __|__   __|     __|  
+   |     |   |     | |       |
+   *    "D"  *    "S"E"      *
+        _|        _|_|
+       |         | |
+       *         * *
+
+                        *
+                ________|________
+               |                 |
+              "C"               "T"
+           ____|____         ____|____
+          |         |       |         |
+         "A"       "O"     "R"
+       ___|      ___|    ___|___  
+      |         |       |       |
+     "R"       "T"     "I"     "Y"
+    __|__     __|__   __|     __|  
+   |     |   |     | |       |
+   *   ("D") *    "S"E"      *
+        _|        _|_|
+       |         | |
+       *         * *
+
+4. Once we've reached "D", we check if this node is marked as a word.
+Since it is, we've found the word "Card" in the trie.
+
+Search: "Ca"
+------------
+
+1. We do the same process here, start from the root node and
+perform a look-up for the character "C".
+
+                        *
+                ________|________
+               |                 |
+             ("C")              "T"
+           ____|____         ____|____
+          |         |       |         |
+         "A"       "O"     "R"
+       ___|      ___|    ___|___  
+      |         |       |       |
+     "R"       "T"     "I"     "Y"
+    __|__     __|__   __|     __|  
+   |     |   |     | |       |
+   *    "D"  *    "S"E"      *
+        _|        _|_|
+       |         | |
+       *         * *
+
+2. Look-up for the character "A".
+
+                        *
+                ________|________
+               |                 |
+              "C"               "T"
+           ____|____         ____|____
+          |         |       |         |
+        ("A")      "O"     "R"
+       ___|      ___|    ___|___  
+      |         |       |       |
+     "R"       "T"     "I"     "Y"
+    __|__     __|__   __|     __|  
+   |     |   |     | |       |
+   *    "D"  *    "S"E"      *
+        _|        _|_|
+       |         | |
+       *         * *
+
+3. Since it's the last character we check, we need to check if
+the node is marked as a word.
+Here it's not, so "Ca" is not a word in our trie.
+
+Search: "Cap"
+-------------
+
+1. Same thing here, look-up "C", then "A".
+
+                        *
+                ________|________
+               |                 |
+             ("C")              "T"
+           ____|____         ____|____
+          |         |       |         |
+         "A"       "O"     "R"
+       ___|      ___|    ___|___  
+      |         |       |       |
+     "R"       "T"     "I"     "Y"
+    __|__     __|__   __|     __|  
+   |     |   |     | |       |
+   *    "D"  *    "S"E"      *
+        _|        _|_|
+       |         | |
+       *         * *
+
+                        *
+                ________|________
+               |                 |
+              "C"               "T"
+           ____|____         ____|____
+          |         |       |         |
+        ("A")      "O"     "R"
+       ___|      ___|    ___|___  
+      |         |       |       |
+     "R"       "T"     "I"     "Y"
+    __|__     __|__   __|     __|  
+   |     |   |     | |       |
+   *    "D"  *    "S"E"      *
+        _|        _|_|
+       |         | |
+       *         * *
+
+2. Then we perform a look-up for the character "P" inside of "A"s
+hash map.
+Since "P" doesn't exist, "Cap" is not a word in our trie.
