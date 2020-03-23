@@ -14,3 +14,4 @@ AssemblyInfo.cs
 *.csproj
 *.user
 *.FileListAbsolute.txt
+*.blob
