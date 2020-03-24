@@ -1,0 +1,186 @@
+﻿----------------------------
+Quick Sort
+----------------------------
+
+Space Complexity: O(log(n))
+
+Time Complexity:
+- Best Case: O(nlog(n))
+- Worst Case: O(n^2)
+
+----------------------------
+Explanation
+----------------------------
+
+Check out this YouTube video:
+(Quick sort in 4 minutes)
+https://www.youtube.com/watch?v=Hoixgm4-P4M
+
+Quick sort (like Merge sort) is a divide and conquer recursive
+sorting algorithm.
+
+Quick sort uses something called "pivots". Essentially, a pivot (some
+item in the unsorted array) is chosen, and the other array items are
+sorted based on the pivot's value - items < pivot are placed before the
+pivot, whereas items > pivot are placed after the pivot.
+After everything has been put in place, we can make the assumption that
+the pivot item should be in it's correct final position in the array.
+
+At this point, the array is essentially split at the pivot, and the same
+quick sort process (find a pivot, move items based on less
+than or greater than pivot value) is applied to both the left and right
+side until the array has been fully sorted.
+(This is where recursion kicks in)
+
+How to choose the pivot?
+
+We can use the Median-of-three method
+(Explained in key definitions section)
+
+----------------------------
+Key Definitions
+----------------------------
+
+Pivot
+------
+
+A chosen item inside an unsorted array (this can be any number, but
+there are best practices for which pivot to choose). This pivot is chosen
+to determine where to place the rest of the items in the array.
+
+Median-of-three
+---------------
+
+Median-of-three is a method for picking a pivot for the Quick sort algorithm.
+We look the first, middle, and last item in the array.
+We then sort them properly, and choose the middle item as our pivot.
+We're making the guess that the chosen middle item is the closest to
+the median of our entire array.
+
+E.g.
+
+[(2), 6, 5, 3, (8), 7, 1, 0, (4)]
+
+Sort it, so it looks like this:
+
+[(2), 6, 5, 3, (4), 7, 1, 0, (8)]
+
+4 will be our pivot.
+
+----------------------------
+Example
+----------------------------
+
+[2, 6, 5, 3, 8, 7, 1, 0]
+
+First, we pick a pivot. In this case we'll pick 3.
+Swap the pivot with the last item in the array.
+
+[2, 6, 5, (0), 8, 7, 1, (3)]
+
+We'll need to track 2 things:
+
+- itemFromLeft: which is the item greater than our pivot value
+- itemFromRight: which is the item less than our pivot value
+
+Create 2 pointers:
+- Pointer 1 index = 0 (start of array)
+- Pointer 2 index = n-2 (the index just before our pivot)
+
+The pointer at the start will increment.
+The pointer at the end will decrement.
+
+We keep incrementing/decrementing until we find values that are
+greater than/less than our pivot value.
+
+E.g. the first pass:
+itemFromLeft points to 2
+itemFromRight ponts to 1
+
+2 < 3, so we increment itemFromLeft.
+1 < 3, so no action since item is less than our pivot.
+
+If both conditions are satisfied, we swap the two items in the array.
+
+We'll apply this process to our current array:
+
+* = Pointers
+() = Pivot
+
+ *                 *
+[2, 6, 5, 0, 8, 7, 1, (3)] (Increment left pointer)
+
+    *              *
+[2, 6, 5, 0, 8, 7, 1, (3)] (Swap left and right)
+[2, 1, 5, 0, 8, 7, 6, (3)]
+
+       *           *
+[2, 1, 5, 0, 8, 7, 6, (3)] (1 < 3, so increment left pointer)
+(5 > 3, so left pointer stays)
+
+       *        *   
+[2, 1, 5, 0, 8, 7, 6, (3)] (6 > 3, so decrement right pointer)
+
+       *     *
+[2, 1, 5, 0, 8, 7, 6, (3)] (7 > 3, so decrement right pointer)
+
+       *  *
+[2, 1, 5, 0, 8, 7, 6, (3)] (8 > 3, so decrement right pointer)
+(0 < 3, so right pointer stays)
+
+       *  *
+[2, 1, 5, 0, 8, 7, 6, (3)] (Swap left and right)
+[2, 1, 0, 5, 8, 7, 6, (3)]
+
+       *  *
+[2, 1, 0, 5, 8, 7, 6, (3)] (Increment/decrement both left and right)
+
+At this point, our leftPointer > rightPointer, so we break out
+of the process and swap the item at the leftPointer index with our pivot.
+
+[2, 1, 0, (3), 8, 7, 6, 5] (Current array)
+
+Now notice that the items on the left of the pivot are smaller
+and the items on the right of the pivot are larger.
+
+Next, we apply the same process to both the left and right sides
+of the current array. So split the array from the pivot and we get this
+
+[2, 1, 0] [3] [8, 7, 6, 5]
+
+Right side process:
+
+[8, (7), 6 ,5]
+
+[8, 5, 6, (7)] (Swap pivot with last item)
+
+ *     *
+[8, 5, 6, (7)] (Swap left and right)
+[6, 5, 8, (7)]
+
+    *  *
+[6, 5, 8, (7)] (6 < 7, so increment left pointer)
+
+      **
+[6, 5, 8, (7)] (5 < 7, so increment left pointer)
+(8 > 7, so left pointer stays)
+
+    *  *
+[6, 5, 8, (7)] (8 > 7, so decrement right pointer)
+(5 < 7, so right pointer stays)
+
+Now, leftPointer > rightPointer, so we swap the pivot with the
+item at the leftPointer index.
+
+[6, 5, (7), 8] (Right side array)
+
+So now we have this:
+
+[2, 1, 0] [3] [6, 5] [7] [8]
+
+We'll do the same process for both
+[2, 1, 0] and [6, 5]
+
+Eventually, we'll end up with a sorted array:
+
+[0, 1, 2, 3, 5, 6, 7, 8]
