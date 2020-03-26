@@ -1,0 +1,130 @@
+﻿----------------------------
+Explanation
+----------------------------
+
+"A Balanced Binary Search Tree (BBST) is a self-balancing binary search tree.
+This type of tree will adjust itself in order to maintain a low (logarithmic)
+height allowing for faster operations such as insertions and deletions."
+- William Fiset
+
+The problem with a Binary Search Tree is that at the worst case, it's
+usual operations such as insert, delete, remove, and search can take up
+to O(n) time. This is due to the reason that Binary Search Tree's can be
+skewed e.g. all nodes are on the left branch.
+
+With a self-balancing binary search tree, we can garauntee that the worst
+case time for these operations will only take up to O(log(n)) time.
+
+Don't forget that a BBST is just a BST, so the BST invariant should still
+be applied! E.g. N.left < N and N.right > N, must have no cycles, should
+have N nodes and N-1 edges.
+
+"We can shuffle/transform/rotate the values and nodes in the tree as we
+please as long as the BST invariantremains satisfied!"
+- William Fiset
+
+----------------------------
+Key Definitions
+----------------------------
+
+Tree Rotations
+---------------
+
+"The secret ingredient to most BBST algorithms is the clever usage of a
+tree invariant and tree rotations."
+
+" A tree invariant is a property/rule you impose on your tree that it must
+meet after every operation. To ensure that the invariant is always satisfied
+a series of tree rotations are normally applied."
+- William Fiset
+
+Right Rotation: rotates the tree to the right.
+
+function rightRotation(A):
+    B := A.left
+    A.left = B.right
+    B.right = A
+    return A
+
+Left Rotation: rotates the tree to the left.
+
+function leftRotation(A):
+    B := A.right
+    A.right = B.left
+    B.left = A
+    return A
+
+----------------------------
+Example
+----------------------------
+
+Unbalanced Binary Search Tree:
+
+            A
+        ____|____
+       |         |
+       B         C
+    ___|___  
+   |       | 
+   D       E
+ __|__
+|     |
+F     G
+
+To balance the above tree, we can perform a right rotation to make B
+the root instead of A.
+Our tree would then look like this:
+
+            B
+        ____|____
+       |         |
+       D         A
+     __|__     __|__
+    |     |   |     |
+    F     G   E     C
+
+Step-by-step of how the right rotation was applied:
+
+Step 1: First we need to get a reference to A's left child node
+In this case - it's B.
+
+Step 2: Next, we need to move B's right child node (E) to A's side.
+Since E > B, and B will be the root, E needs to be moved to the right side
+to satisfy the BST invariant.
+But we know that E < A, so E will be inserted as A's left child node.
+So we point A.left (B) to B.right (E)
+
+            A
+           _|____
+          |      |
+       B  |      C
+    ___|  |
+   |      | 
+   D      E
+ __|__
+|     |
+F     G
+
+Step 3: Next, we need to set A as B's right child node, so point B.right
+to A.
+
+        ____A
+       |   _|____
+       |  |      |
+       B  |      C
+    ___|  |
+   |      | 
+   D      E
+ __|__
+|     |
+F     G
+
+Clean up the visuals, and the tree looks like this:
+
+            B
+        ____|____
+       |         |
+       D         A
+     __|__     __|__
+    |     |   |     |
+    F     G   E     C
