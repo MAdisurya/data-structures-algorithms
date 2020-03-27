@@ -1,0 +1,177 @@
+﻿----------------------------
+Explanation
+----------------------------
+
+"An AVL tree is one of many types of Balanced Binary Search Trees (BBSTs)
+which allow for logarithmic O(log(n)) insertion, deletion, and search operations."
+- William Fiset
+
+As mentioned in the BBST explanation, standard BSTs usually take O(log(n))
+time to perform the operations (insertion, deletion, search) - however, if
+the BST is skewed, e.g. the height of the branch of the left/right is higher
+than the other branch, then at the worst case it can take up to O(n) time
+to perform these operations.
+
+"In fact, it is the first type of BBST to be discovered. Soon after, many
+other types of BBSTs started to emerge including the 2-3 tree, the AA tree,
+the scapegoat tree, and it's main rival, the red-black tree."
+- William Fiset
+
+----------------------------
+Key Definitions
+----------------------------
+
+AVL Tree Invariant
+-------------------
+
+"The property which keeps the AVL tree balanced is called the
+Balance Factor (BF).
+
+BF(node) = H(node.right) - H(node.left)
+
+Where H(x) is the height of node x. Recall that H(x) is calculated
+as the number of edges between x and the furthest leaf.
+E.g. if your tree only has one node, then the height = 0 because
+the number of edges (there are no edges) between that node
+and furthest leaf is 0.
+
+The invariant in the AVL which forces it to remain balanced is the
+requirement that the balance factor is always either -1, 0, or +1."
+- William Fiset
+
+---------------------------------------------------------------------
+
+Question: What if the BF of a node is != {-1, 0, +1}? How do we
+restore the AVL tree invariant?
+
+Answer: If a node's BF is != {-1, 0, +1}, we know that the BF of the
+node is +/-2, so we can apply the tree rotations to adjust the tree.
+
+---------------------------------------------------------------------
+
+There are 4 different cases when we need to apply a tree rotation to
+adjust the AVL Tree.
+
+Refer to BBST expalanation for tree rotations.
+
+Left Left Case
+-----------------
+
+            5
+        ____|____
+       |         |
+       4         D
+    ___|___ 
+   |       |
+   3       C
+ __|__
+|     |
+A     B
+
+=> We do a Right Rotation to balance the tree
+
+       4
+    ___|___ 
+   |       |
+   3       5
+ __|__   __|__
+|     | |     |
+A     B C     D
+
+Left Right Case
+----------------
+
+            5
+        ____|____
+       |         |
+       3         D
+    ___|___ 
+   |       |
+   A       4
+         __|__
+        |     |
+        B     C
+
+=> We perform a Left Rotation so that 3 becomes 4's left child node
+
+            5
+        ____|____
+       |         |
+       4         D
+    ___|___ 
+   |       |
+   3       C
+ __|__
+|     |
+A     B
+
+=> Here we just a Left Left case again, so we do a Right rotation.
+
+       4
+    ___|___ 
+   |       |
+   3       5
+ __|__   __|__
+|     | |     |
+A     B C     D
+
+Right Right Case
+-----------------
+
+            3
+        ____|____
+       |         |
+       A         4
+              ___|___
+             |       |
+             B       5
+                   __|__
+                  |     |
+                  C     D
+
+=> We do a Left rotation to balance the tree
+
+            4
+        ____|____
+       |         |
+       3         5
+    ___|___   ___|___
+   |       | |       |
+   A       B C       D
+
+Right Left Case
+----------------
+
+            3
+        ____|____
+       |         |
+       A         5
+              ___|___
+             |       |
+             4       D
+           __|__
+          |     |
+          B     C
+
+=> We do a Right rotation here so that 5 becomes 4's right child node
+
+            3
+        ____|____
+       |         |
+       A         4
+              ___|___
+             |       |
+             B       5
+                   __|__
+                  |     |
+                  C     D
+
+=> Here we just have a Right Right case, so do a Left Rotation.
+
+            4
+        ____|____
+       |         |
+       3         5
+    ___|___   ___|___
+   |       | |       |
+   A       B C       D
