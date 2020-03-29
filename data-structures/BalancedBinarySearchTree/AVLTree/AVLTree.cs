@@ -203,6 +203,109 @@ public class AVLTree<T> where T : IComparable
     }
 
     /// <summary>
+    /// Removes a node from the AVL tree.
+    /// This is called recursively.
+    /// </summary>
+    private Node Remove(Node node, T value)
+    {
+        // Handle base case
+        if (node == null) return null;
+
+        int compare = value.CompareTo(node.value);
+
+        // If the value is less than node.value
+        // Dig into the left subtree
+        if (compare < 0)
+        {
+            node.left = Remove(node.left, value);
+        }
+        // If the value is greater than node.value
+        // Dig into the right subtree
+        else if (compare > 0)
+        {
+            node.right = Remove(node.right, value);
+        }
+        // Otherwise, the values are equal meaning we've found
+        // the node we want to remove
+        else
+        {
+            // This is the case where only the right subtree or no subtree
+            // exists for the current node. We just swap the node we want
+            // to remove with its right child.
+            if (node.left == null)
+            {
+                return node.right;
+            }
+            // This is the case where only the left subtree exists. Here we
+            // just do the opposite and swap the node we want to remove with
+            // it's left child
+            else if (node.right == null)
+            {
+                return node.left;
+            }
+            // When removing from a binary tree with both a left and right
+            // subtrees, the successor node can either be the largest value
+            // from the left subtree, or the smallest value from the right
+            // subtree.
+            // Here I will choose the successor from the right subtree.
+            else
+            {
+                // Swap the value of the successor node with the current node
+                T successorValue = FindMin(node.right);
+                node.value = successorValue;
+
+                // Go into the right subtree and remove the leftmost node where
+                // we just copied the value into the current node
+                node.right = Remove(node.right, successorValue);
+            }
+        }
+
+        // Update balance factor and height of current node
+        Update(node);
+
+        return Balance(node);
+    }
+
+    /// <summary>
+    /// Remove the passed value from the AVl Tree if it exists.
+    /// </summary>
+    /// <param name="value"></param>
+    public void Remove(T value)
+    {
+        if (value == null) return;
+
+        if (Contains(root, value))
+        {
+            root = Remove(root, value);
+            nodeCount--;
+        }
+
+        Console.WriteLine($"Removed Node: {value}");
+;    }
+
+    /// <summary>
+    /// Helper method that recursively traverses the left subtree of a
+    /// binary tree, and returns the smallest node.value (which is
+    /// the left furthest leaf node).
+    /// </summary>
+    private T FindMin(Node node)
+    {
+        while (node.left != null) node = node.left;
+        return node.value;
+    }
+
+    /// <summary>
+    /// Helper method that recursively traverses the right subtree of a
+    /// binary tree, and returns the largest node.value (which is
+    /// the right furthest leaf node).
+    /// </summary>
+    private T FindMax(Node node)
+    {
+        while (node.right != null) node = node.right;
+        return node.value;
+    }
+
+    /// <summary>
     /// Perform a left rotation on the tree
     /// </summary>
     /// <param name="node"></param>
@@ -327,12 +430,19 @@ public class MainClass
         Console.WriteLine($"IsEmpty(): {avl.IsEmpty()}");
         Console.WriteLine();
 
-        Console.WriteLine("Before Balancing: 8, 5, 14, 4, 6, 12, 16, 3, 10, 2, 9");
+        Console.WriteLine("Before Balancing (Level Order): 8, 5, 14, 4, 6, 12, 16, 3, 10, 2, 9");
         Console.WriteLine();
         Console.WriteLine();
-        Console.Write("After Balancing: ");
+        Console.Write("After Balancing (Level Order): ");
         avl.Levelorder();
         Console.WriteLine();
+        Console.WriteLine();
+
+        avl.Remove(9);
+        avl.Remove(2);
+        Console.WriteLine();
+        Console.Write("Level Order output: ");
+        avl.Levelorder();
         Console.WriteLine();
 
         // Expected Output:
@@ -355,8 +465,13 @@ public class MainClass
         // Size(): 11
         // IsEmpty(): False
         //
-        // Before Balancing: 8, 5, 14, 4, 6, 12, 16, 3, 10, 2, 9
+        // Before Balancing (Level Order): 8, 5, 14, 4, 6, 12, 16, 3, 10, 2, 9
         //
-        // After Balancing: 8, 5, 14, 3, 6, 10, 16, 2, 4, 9, 12
+        // After Balancing (Level Order): 8, 5, 14, 3, 6, 10, 16, 2, 4, 9, 12
+        //
+        // Removed Node: 9
+        // Removed Node: 2
+        //
+        // Level Order output: 8, 5, 14, 3, 6, 10, 16, 4, 12
     }
 }
