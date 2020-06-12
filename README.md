@@ -14,11 +14,15 @@ But feel free to look at the source code, fork it, etc.
 - [Stack](https://github.com/MAdisurya/data-structures-algorithms/tree/master/data-structures/stack/Stack)
 - [Queue](https://github.com/MAdisurya/data-structures-algorithms/tree/master/data-structures/queue/Queue)
 - [Binary Search Tree](https://github.com/MAdisurya/data-structures-algorithms/tree/master/data-structures/binary-search-tree/BinarySearchTree)
+- [Balanced Binary Search Tree](https://github.com/MAdisurya/data-structures-algorithms/tree/master/data-structures/BalancedBinarySearchTree)
+- [AVL Tree](https://github.com/MAdisurya/data-structures-algorithms/tree/master/data-structures/BalancedBinarySearchTree/AVLTree)
+- [Trie/Prefix Tree](https://github.com/MAdisurya/data-structures-algorithms/tree/master/data-structures/trie/Trie)
 
 ### Algorithms
 - [Sliding Window](https://github.com/MAdisurya/data-structures-algorithms/tree/master/algorithms/sliding-window)
 - [Binary Search](https://github.com/MAdisurya/data-structures-algorithms/tree/master/algorithms/binary-search)
 - [Merge Sort](https://github.com/MAdisurya/data-structures-algorithms/tree/master/algorithms/merge-sort/MergeSort)
+- [Quick Sort](https://github.com/MAdisurya/data-structures-algorithms/tree/master/algorithms/quick-sort/QuickSort)
 - [Depth First Search (DFS)](https://github.com/MAdisurya/data-structures-algorithms/tree/master/algorithms/depth-first-search/DepthFirstSearch)
 - [Breadth First Search (BFS)](https://github.com/MAdisurya/data-structures-algorithms/tree/master/algorithms/breadth-first-search/BreadthFirstSearch)
 - [Dynamic Programming](https://github.com/MAdisurya/data-structures-algorithms/tree/master/algorithms/dynamic-programming/DynamicProgramming)
