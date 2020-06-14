@@ -6,6 +6,8 @@ Each implementation will be done in C#, accompanied by an explanation of the DS/
 This is mainly for my personal use - practicing implementations, quickly brush up on DSA concepts, etc.
 But feel free to look at the source code, fork it, etc.
 
+*[NEW] Added questions sections that includes practice questions & implementations (writted in python 3)*
+
 ## Table Of Contents
 
 ### Data Structures
@@ -26,3 +28,7 @@ But feel free to look at the source code, fork it, etc.
 - [Depth First Search (DFS)](https://github.com/MAdisurya/data-structures-algorithms/tree/master/algorithms/depth-first-search/DepthFirstSearch)
 - [Breadth First Search (BFS)](https://github.com/MAdisurya/data-structures-algorithms/tree/master/algorithms/breadth-first-search/BreadthFirstSearch)
 - [Dynamic Programming](https://github.com/MAdisurya/data-structures-algorithms/tree/master/algorithms/dynamic-programming/DynamicProgramming)
+
+### Questions
+#### Arrays
+- [Merge Ranges](https://github.com/MAdisurya/data-structures-algorithms/blob/master/questions/merge_ranges.py)
