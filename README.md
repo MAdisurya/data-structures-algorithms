@@ -34,3 +34,4 @@ But feel free to look at the source code, fork it, etc.
 - [Merge Ranges](https://github.com/MAdisurya/data-structures-algorithms/blob/master/questions/merge_ranges.py)
 - [Reverse String (in place)](https://github.com/MAdisurya/data-structures-algorithms/blob/master/questions/reverse_string.py)
 - [Reverse Words (in place)](https://github.com/MAdisurya/data-structures-algorithms/blob/master/questions/reverse_words.py)
+- [Cake Order Checker](https://github.com/MAdisurya/data-structures-algorithms/blob/master/questions/cake_order_checker.py)
