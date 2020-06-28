@@ -37,3 +37,4 @@ But feel free to look at the source code, fork it, etc.
 - [Cake Order Checker](https://github.com/MAdisurya/data-structures-algorithms/blob/master/questions/cake_order_checker.py)
 #### Hash map/table/set
 - [Inflight Entertainment](https://github.com/MAdisurya/data-structures-algorithms/blob/master/questions/inflight_entertainment.py)
+- [Permutation Palindrome](https://github.com/MAdisurya/data-structures-algorithms/blob/master/questions/permutation_palindrome.py)
