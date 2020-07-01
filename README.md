@@ -38,3 +38,4 @@ But feel free to look at the source code, fork it, etc.
 #### Hash map/table/set
 - [Inflight Entertainment](https://github.com/MAdisurya/data-structures-algorithms/blob/master/questions/inflight_entertainment.py)
 - [Permutation Palindrome](https://github.com/MAdisurya/data-structures-algorithms/blob/master/questions/permutation_palindrome.py)
+- [Word Cloud Data](https://github.com/MAdisurya/data-structures-algorithms/blob/master/questions/word_cloud_data.py)
