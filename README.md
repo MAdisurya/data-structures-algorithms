@@ -39,3 +39,6 @@ But feel free to look at the source code, fork it, etc.
 - [Inflight Entertainment](https://github.com/MAdisurya/data-structures-algorithms/blob/master/questions/inflight_entertainment.py)
 - [Permutation Palindrome](https://github.com/MAdisurya/data-structures-algorithms/blob/master/questions/permutation_palindrome.py)
 - [Word Cloud Data](https://github.com/MAdisurya/data-structures-algorithms/blob/master/questions/word_cloud_data.py)
+- [Sort Scores](https://github.com/MAdisurya/data-structures-algorithms/blob/master/questions/sort_scores.py)
+#### Greedy Algorithms
+- [Get Max Profit](https://github.com/MAdisurya/data-structures-algorithms/blob/master/questions/get_max_profit.py)
