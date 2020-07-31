@@ -42,3 +42,5 @@ But feel free to look at the source code, fork it, etc.
 - [Sort Scores](https://github.com/MAdisurya/data-structures-algorithms/blob/master/questions/sort_scores.py)
 #### Greedy Algorithms
 - [Get Max Profit](https://github.com/MAdisurya/data-structures-algorithms/blob/master/questions/get_max_profit.py)
+- [Highest Product Of Three](https://github.com/MAdisurya/data-structures-algorithms/blob/master/questions/highest_product_of_three.py)
+- [Product Of All Other Numbers](https://github.com/MAdisurya/data-structures-algorithms/blob/master/questions/product_of_all_other_numbers.py)
